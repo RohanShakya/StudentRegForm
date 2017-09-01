@@ -1,0 +1,138 @@
+﻿@model IEnumerable<StuRegForm.Models.StuRegFormDb.vwStuAllInfo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VoucherNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mobile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParentMobile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pZone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pDistrict)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pWardNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pStreetName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Percentage)
+        </th>
+        <th>
+            @Html.DisplayName("Photo")
+        </th>
+        <th>
+            @Html.DisplayName("Marksheet")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Percentage)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VoucherNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MiddleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mobile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfBirth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParentMobile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pZone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pDistrict)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pWardNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pStreetName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Percentage)
+        </td>
+        <td>
+            <img width="50px" height="50px" src="@Url.Content(@item.PhotoAttPath)" />
+        </td>
+        <td>
+            <img width="50px" height="50px" src="@Url.Content("~/Content/Uploads/marksheet/" + @item.MarksheetAttName)" />
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

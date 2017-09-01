@@ -1,0 +1,42 @@
+﻿@model StuRegForm.Models.StuRegFormDb.vwStudentAddress
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>vwStudentAddress</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MiddleName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PerAddressId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PerAddressId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TempAddressId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TempAddressId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

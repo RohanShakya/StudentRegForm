@@ -1,0 +1,310 @@
+﻿@model StuRegForm.ViewModel.StudentsViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@*<script src="~/Scripts/jquery-ui-1.12.1.js"></script>*@
+
+<h2>Index</h2>
+
+
+@using (Html.BeginForm("Index", "Enroll", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+//< script src = "~/Scripts/jquery-1.10.2.js" ></ script >
+    <div class="form-horizontal">
+        <h4>StudentsViewModel</h4>
+        <hr />
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VoucherNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.VoucherNo, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.VoucherNo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MiddleName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MiddleName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MiddleName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GenderId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("GenderId", null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.GenderId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Mobile, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Mobile, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateOfBirth, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ParentName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ParentName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ParentName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ParentMobile, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ParentMobile, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ParentMobile, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.PerAddressId, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <div class="col-md-1"> @Html.LabelFor(x => x.ZoneId) </div>
+            <div class="col-md-2"> @Html.DropDownList("ZoneId", null, new { @class = "form-control" })</div>
+
+            <div class="col-md-1 col-md-offset-2"> @Html.LabelFor(x => x.DistrictId) </div>
+            <div class="col-md-2">@Html.DropDownList("DistrictId", null, new { @class = "form-control" })</div>
+
+            <div class="col-md-offset-2 col-md-1"> @Html.LabelFor(x => x.StudentAddress.WardNo) </div>
+            <div class="col-md-2"> @Html.TextBoxFor(model => model.StudentAddress.WardNo, new { @class = "form-control" })</div>
+
+            <div class="col-md-1 col-md-offset-2"> @Html.LabelFor(x => x.StudentAddress.StreetName) </div>
+            <div class="col-md-2">@Html.TextBoxFor(model => model.StudentAddress.StreetName, new { @class = "form-control" })</div>
+
+            @Html.ValidationMessageFor(model => model.PerAddressId, "", new { @class = "text-danger" })
+
+
+            @*<div class="col-md-10">
+                    @Html.DropDownList("ZoneId", null, new { @class = "form-control" })
+                    @Html.DropDownList("DistrictId", null, new { @class = "form-control" })
+                    @Html.TextBoxFor(model => model.StudentAddress.WardNo, new { @class = "form-control" })
+                    @Html.TextBoxFor(model => model.StudentAddress.StreetName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PerAddressId, "", new { @class = "text-danger" })
+                </div>
+        </div>
+    *@
+
+        <div class="form-group">
+            @Html.Label("Permanent address")
+            @*<div class="form-group">
+                <div class="col-md-offset-2 col-md-1"> @Html.LabelFor(x => x.PerZoneId) </div>
+                <div class="col-md-2"> @Html.DropDownList("PerZoneId", null, new { @class = "form-control", @id = "zone" })</div>
+
+                <div class="col-md-1 col-md-offset-2"> @Html.LabelFor(x => x.PerDistrictId) </div>
+                <div class="col-md-2">@Html.DropDownList("PerDistrictId", null, new { @class = "form-control", @id = "district" })</div>
+            </div>*@
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-1"> @Html.LabelFor(x => x.PerZoneId) </div>
+                <div class="col-md-2"> @Html.DropDownListFor(x=>x.PerZoneId, ViewBag.ZonesList as SelectList, "--Select Zone--", new { @class="form-control" }) </div>
+
+                <div class="col-md-1 col-md-offset-2"> @Html.LabelFor(x => x.PerDistrictId) </div>
+                <div class="col-md-2">@Html.DropDownListFor(x => x.PerDistrictId, new SelectList(""), "--Select District--", new { @class = "form-control" }) </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-1"> @Html.LabelFor(x => x.PerWardNo) </div>
+                <div class="col-md-2"> @Html.TextBoxFor(model => model.PerWardNo, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PerWardNo, "", new { @class = "text-danger" })</div>
+
+                <div class="col-md-1 col-md-offset-2"> @Html.LabelFor(x => x.PerStreet) </div>
+                <div class="col-md-2">@Html.TextBoxFor(model => model.PerStreet, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PerStreet, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @*@Html.ValidationMessageFor(model => model.TempAddressId, "", new { @class = "text-danger" })*@
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Temporary address")
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-1"> @Html.LabelFor(x => x.TempZoneId) </div>
+                <div class="col-md-2"> @Html.DropDownList("TempZoneId", null, new { @class = "form-control" })</div>
+
+                <div class="col-md-1 col-md-offset-2"> @Html.LabelFor(x => x.TempDistrictId) </div>
+                <div class="col-md-2">@Html.DropDownList("TempDistrictId", null, new { @class = "form-control" })</div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-1"> @Html.LabelFor(x => x.TempWardNo) </div>
+                <div class="col-md-2"> @Html.TextBoxFor(model => model.TempWardNo, new { @class = "form-control" })</div>
+
+                <div class="col-md-1 col-md-offset-2"> @Html.LabelFor(x => x.TempStreet) </div>
+                <div class="col-md-2">@Html.TextBoxFor(model => model.TempStreet, new { @class = "form-control" })</div>
+            </div>
+
+            @*@Html.ValidationMessageFor(model => model.TempAddressId, "", new { @class = "text-danger" })*@
+        </div>
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.TempAddressId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TempAddressId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TempAddressId, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+
+        <div class="form-group">
+            @Html.Label("Academic details")
+
+            <table class="table table-bordered">
+                <tr>
+                    <th> @Html.DisplayName("School Name")</th>
+                    <th> @Html.DisplayName("School Address")</th>
+                    <th> @Html.DisplayName("Level")</th>
+                    <th> @Html.DisplayName("Board")</th>
+                    <th> @Html.DisplayName("Grade")</th>
+                    <th> @Html.DisplayName("Percentage")</th>
+                    <th> @Html.DisplayName("Passed year")</th>
+                </tr>
+
+                <tr>
+                    <td> @Html.TextBoxFor(x => x.SchoolName)</td>
+                    <td> @Html.TextBoxFor(x => x.SchoolAddress)</td>
+                    <td> @Html.DropDownList("LevelId", null, new { @class = "form-control" })</td>
+                    <td> @Html.DropDownList("BoardId", null, new { @class = "form-control" })</td>
+                    <td> @Html.DropDownList("GradeId", null, new { @class = "form-control" })</td>
+                    <td> @Html.TextBoxFor(x => x.Percentage)</td>
+                    <td> @Html.TextBoxFor(x => x.PassedYear)</td>
+
+                </tr>
+                @Html.ValidationMessageFor(model => model.SchoolName, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.SchoolAddress, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.PassedYear, "", new { @class = "text-danger" })
+            </table>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CourseId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("CourseId", null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Upload your Passport Sized Photo", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="photoFile" id="photoFile" accept="image/*" />
+                @Html.ValidationMessageFor(model => model.photoFile, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Upload scanned copy of your Marksheet", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" @*name="marksheetFile"*@ />
+                @Html.ValidationMessageFor(model => model.marksheetFile, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<button id="btn">click</button>
+<p id="para">paragraph</p>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#PerZoneId').on('change', function () {
+                //alert('changed.');
+                //var perZoneId = $('#PerZoneId').val();
+                debugger
+                $.ajax({
+                    url: '/Enroll/GetDistrictsList',
+                    data: { perZoneId: $('#PerZoneId').val() },
+                    //type: 'POST',
+                    //dataType: 'json',
+                    success: function (result) {
+                        debugger
+                        //$('#PerDistrictId').html("");
+                        $('#PerDistrictId').empty();
+                        $.each(result, function (index, row) {
+                            $('#PerDistrictId').append('<option value ="' + row.Id + '">' + row.District + '</option>');
+                        });
+                    },
+                    error: function () {
+                        alert('Failed to retrieve districts.');
+                    }
+
+                });
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#DateOfBirth").datepicker({
+                dateFormat: "yy/mm/dd",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-40:+0"
+            });
+
+            $("#btn").click(function () {
+                $("#para").hide();
+            });
+        });
+
+    </script>
+}
+
+@Html.Partial("_contact")

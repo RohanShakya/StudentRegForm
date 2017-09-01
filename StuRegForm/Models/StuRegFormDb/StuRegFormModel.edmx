@@ -1,0 +1,1251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="StuRegFormModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Board">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="BoardName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Courses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="CourseName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Districts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="District" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ZoneId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Genders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Grades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="GPA" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Level">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="LevelName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentAddress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ZoneId" Type="int" Nullable="false" />
+          <Property Name="DistrictId" Type="int" Nullable="false" />
+          <Property Name="WardNo" Type="int" Nullable="false" />
+          <Property Name="StreetName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentAttachments">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="PhotoAttPath" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="PhotoAttName" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="MarksheetAttPath" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="MarksheetAttName" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentCourse">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="VoucherNo" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GenderId" Type="int" Nullable="false" />
+          <Property Name="Mobile" Type="bigint" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DateOfBirth" Type="date" Nullable="false" />
+          <Property Name="ParentName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ParentMobile" Type="bigint" Nullable="false" />
+          <Property Name="PerAddressId" Type="int" Nullable="false" />
+          <Property Name="TempAddressId" Type="int" />
+          <Property Name="RegistrationDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentSchool">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="SchoolName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SchoolAddress" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PassedYear" Type="int" Nullable="false" />
+          <Property Name="LevelId" Type="int" Nullable="false" />
+          <Property Name="GradeId" Type="int" Nullable="false" />
+          <Property Name="Percentage" Type="float" />
+          <Property Name="BoardId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsAdmin" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Zones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Zone" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'StuRegForm.dbo.vwStuAllInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwStuAllInfo">
+          <Key>
+            <PropertyRef Name="StudentId" />
+            <PropertyRef Name="VoucherNo" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="Gender" />
+            <PropertyRef Name="Mobile" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="DateOfBirth" />
+            <PropertyRef Name="ParentName" />
+            <PropertyRef Name="ParentMobile" />
+            <PropertyRef Name="RegistrationDate" />
+            <PropertyRef Name="pZone" />
+            <PropertyRef Name="pDistrict" />
+            <PropertyRef Name="pWardNo" />
+            <PropertyRef Name="pStreetName" />
+            <PropertyRef Name="tZone" />
+            <PropertyRef Name="tDistrict" />
+            <PropertyRef Name="tWardNo" />
+            <PropertyRef Name="tStreetName" />
+            <PropertyRef Name="SchoolName" />
+            <PropertyRef Name="SchoolAddress" />
+            <PropertyRef Name="PassedYear" />
+            <PropertyRef Name="BoardName" />
+            <PropertyRef Name="LevelName" />
+            <PropertyRef Name="GPA" />
+            <PropertyRef Name="CourseName" />
+            <PropertyRef Name="PhotoAttPath" />
+            <PropertyRef Name="PhotoAttName" />
+            <PropertyRef Name="MarksheetAttPath" />
+            <PropertyRef Name="MarksheetAttName" />
+          </Key>
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="VoucherNo" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mobile" Type="bigint" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DateOfBirth" Type="date" Nullable="false" />
+          <Property Name="ParentName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ParentMobile" Type="bigint" Nullable="false" />
+          <Property Name="RegistrationDate" Type="date" Nullable="false" />
+          <Property Name="pZone" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="pDistrict" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="pWardNo" Type="int" Nullable="false" />
+          <Property Name="pStreetName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tZone" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tDistrict" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tWardNo" Type="int" Nullable="false" />
+          <Property Name="tStreetName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SchoolName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SchoolAddress" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PassedYear" Type="int" Nullable="false" />
+          <Property Name="Percentage" Type="float" />
+          <Property Name="BoardName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LevelName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GPA" Type="float" Nullable="false" />
+          <Property Name="CourseName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhotoAttPath" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="PhotoAttName" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="MarksheetAttPath" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="MarksheetAttName" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'StuRegForm.dbo.vwStudentAddress' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwStudentAddress">
+          <Key>
+            <PropertyRef Name="StudentId" />
+            <PropertyRef Name="VoucherNo" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="GenderId" />
+            <PropertyRef Name="Mobile" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="DateOfBirth" />
+            <PropertyRef Name="ParentName" />
+            <PropertyRef Name="ParentMobile" />
+            <PropertyRef Name="RegistrationDate" />
+            <PropertyRef Name="PZone" />
+            <PropertyRef Name="PDistrict" />
+            <PropertyRef Name="wardNo" />
+            <PropertyRef Name="StreetName" />
+            <PropertyRef Name="tWard" />
+            <PropertyRef Name="tStreet" />
+            <PropertyRef Name="TZone" />
+            <PropertyRef Name="TDistrict" />
+          </Key>
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="VoucherNo" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GenderId" Type="int" Nullable="false" />
+          <Property Name="Mobile" Type="bigint" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DateOfBirth" Type="date" Nullable="false" />
+          <Property Name="ParentName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ParentMobile" Type="bigint" Nullable="false" />
+          <Property Name="PerAddressId" Type="int" />
+          <Property Name="TempAddressId" Type="int" />
+          <Property Name="RegistrationDate" Type="date" Nullable="false" />
+          <Property Name="PZone" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PDistrict" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="wardNo" Type="int" Nullable="false" />
+          <Property Name="StreetName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tWard" Type="int" Nullable="false" />
+          <Property Name="tStreet" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TZone" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TDistrict" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Districts_Zones">
+          <End Role="Zones" Type="Self.Zones" Multiplicity="1" />
+          <End Role="Districts" Type="Self.Districts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Districts">
+              <PropertyRef Name="ZoneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentAddress_Districts">
+          <End Role="Districts" Type="Self.Districts" Multiplicity="1" />
+          <End Role="StudentAddress" Type="Self.StudentAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Districts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentAddress">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentAddress_Zones">
+          <End Role="Zones" Type="Self.Zones" Multiplicity="1" />
+          <End Role="StudentAddress" Type="Self.StudentAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentAddress">
+              <PropertyRef Name="ZoneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentAttachments_Students">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="StudentAttachments" Type="Self.StudentAttachments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="StudentAttachments">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentCourse_Courses">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
+          <End Role="StudentCourse" Type="Self.StudentCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentCourse">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentCourse_Students">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="StudentCourse" Type="Self.StudentCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="StudentCourse">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_Genders">
+          <End Role="Genders" Type="Self.Genders" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_StudentAddress">
+          <End Role="StudentAddress" Type="Self.StudentAddress" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentAddress">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="PerAddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_StudentAddress1">
+          <End Role="StudentAddress" Type="Self.StudentAddress" Multiplicity="0..1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentAddress">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="TempAddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentSchool_Board">
+          <End Role="Board" Type="Self.Board" Multiplicity="1" />
+          <End Role="StudentSchool" Type="Self.StudentSchool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Board">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentSchool">
+              <PropertyRef Name="BoardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentSchool_Grades">
+          <End Role="Grades" Type="Self.Grades" Multiplicity="1" />
+          <End Role="StudentSchool" Type="Self.StudentSchool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentSchool">
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentSchool_Level">
+          <End Role="Level" Type="Self.Level" Multiplicity="1" />
+          <End Role="StudentSchool" Type="Self.StudentSchool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Level">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentSchool">
+              <PropertyRef Name="LevelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentSchool_Students">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="StudentSchool" Type="Self.StudentSchool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="StudentSchool">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StuRegFormModelStoreContainer">
+          <EntitySet Name="Board" EntityType="Self.Board" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Districts" EntityType="Self.Districts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genders" EntityType="Self.Genders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grades" EntityType="Self.Grades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Level" EntityType="Self.Level" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentAddress" EntityType="Self.StudentAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentAttachments" EntityType="Self.StudentAttachments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentCourse" EntityType="Self.StudentCourse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentSchool" EntityType="Self.StudentSchool" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zones" EntityType="Self.Zones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vwStuAllInfo" EntityType="Self.vwStuAllInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwStuAllInfo].[StudentId] AS [StudentId], 
+    [vwStuAllInfo].[VoucherNo] AS [VoucherNo], 
+    [vwStuAllInfo].[FirstName] AS [FirstName], 
+    [vwStuAllInfo].[MiddleName] AS [MiddleName], 
+    [vwStuAllInfo].[LastName] AS [LastName], 
+    [vwStuAllInfo].[Gender] AS [Gender], 
+    [vwStuAllInfo].[Mobile] AS [Mobile], 
+    [vwStuAllInfo].[Email] AS [Email], 
+    [vwStuAllInfo].[DateOfBirth] AS [DateOfBirth], 
+    [vwStuAllInfo].[ParentName] AS [ParentName], 
+    [vwStuAllInfo].[ParentMobile] AS [ParentMobile], 
+    [vwStuAllInfo].[RegistrationDate] AS [RegistrationDate], 
+    [vwStuAllInfo].[pZone] AS [pZone], 
+    [vwStuAllInfo].[pDistrict] AS [pDistrict], 
+    [vwStuAllInfo].[pWardNo] AS [pWardNo], 
+    [vwStuAllInfo].[pStreetName] AS [pStreetName], 
+    [vwStuAllInfo].[tZone] AS [tZone], 
+    [vwStuAllInfo].[tDistrict] AS [tDistrict], 
+    [vwStuAllInfo].[tWardNo] AS [tWardNo], 
+    [vwStuAllInfo].[tStreetName] AS [tStreetName], 
+    [vwStuAllInfo].[SchoolName] AS [SchoolName], 
+    [vwStuAllInfo].[SchoolAddress] AS [SchoolAddress], 
+    [vwStuAllInfo].[PassedYear] AS [PassedYear], 
+    [vwStuAllInfo].[Percentage] AS [Percentage], 
+    [vwStuAllInfo].[BoardName] AS [BoardName], 
+    [vwStuAllInfo].[LevelName] AS [LevelName], 
+    [vwStuAllInfo].[GPA] AS [GPA], 
+    [vwStuAllInfo].[CourseName] AS [CourseName], 
+    [vwStuAllInfo].[PhotoAttPath] AS [PhotoAttPath], 
+    [vwStuAllInfo].[PhotoAttName] AS [PhotoAttName], 
+    [vwStuAllInfo].[MarksheetAttPath] AS [MarksheetAttPath], 
+    [vwStuAllInfo].[MarksheetAttName] AS [MarksheetAttName]
+    FROM [dbo].[vwStuAllInfo] AS [vwStuAllInfo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwStudentAddress" EntityType="Self.vwStudentAddress" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwStudentAddress].[StudentId] AS [StudentId], 
+    [vwStudentAddress].[VoucherNo] AS [VoucherNo], 
+    [vwStudentAddress].[FirstName] AS [FirstName], 
+    [vwStudentAddress].[MiddleName] AS [MiddleName], 
+    [vwStudentAddress].[LastName] AS [LastName], 
+    [vwStudentAddress].[GenderId] AS [GenderId], 
+    [vwStudentAddress].[Mobile] AS [Mobile], 
+    [vwStudentAddress].[Email] AS [Email], 
+    [vwStudentAddress].[DateOfBirth] AS [DateOfBirth], 
+    [vwStudentAddress].[ParentName] AS [ParentName], 
+    [vwStudentAddress].[ParentMobile] AS [ParentMobile], 
+    [vwStudentAddress].[PerAddressId] AS [PerAddressId], 
+    [vwStudentAddress].[TempAddressId] AS [TempAddressId], 
+    [vwStudentAddress].[RegistrationDate] AS [RegistrationDate], 
+    [vwStudentAddress].[PZone] AS [PZone], 
+    [vwStudentAddress].[PDistrict] AS [PDistrict], 
+    [vwStudentAddress].[wardNo] AS [wardNo], 
+    [vwStudentAddress].[StreetName] AS [StreetName], 
+    [vwStudentAddress].[tWard] AS [tWard], 
+    [vwStudentAddress].[tStreet] AS [tStreet], 
+    [vwStudentAddress].[TZone] AS [TZone], 
+    [vwStudentAddress].[TDistrict] AS [TDistrict]
+    FROM [dbo].[vwStudentAddress] AS [vwStudentAddress]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Districts_Zones" Association="Self.FK_Districts_Zones">
+            <End Role="Zones" EntitySet="Zones" />
+            <End Role="Districts" EntitySet="Districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentAddress_Districts" Association="Self.FK_StudentAddress_Districts">
+            <End Role="Districts" EntitySet="Districts" />
+            <End Role="StudentAddress" EntitySet="StudentAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentAddress_Zones" Association="Self.FK_StudentAddress_Zones">
+            <End Role="Zones" EntitySet="Zones" />
+            <End Role="StudentAddress" EntitySet="StudentAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentAttachments_Students" Association="Self.FK_StudentAttachments_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="StudentAttachments" EntitySet="StudentAttachments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentCourse_Courses" Association="Self.FK_StudentCourse_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="StudentCourse" EntitySet="StudentCourse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentCourse_Students" Association="Self.FK_StudentCourse_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="StudentCourse" EntitySet="StudentCourse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Genders" Association="Self.FK_Students_Genders">
+            <End Role="Genders" EntitySet="Genders" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_StudentAddress" Association="Self.FK_Students_StudentAddress">
+            <End Role="StudentAddress" EntitySet="StudentAddress" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_StudentAddress1" Association="Self.FK_Students_StudentAddress1">
+            <End Role="StudentAddress" EntitySet="StudentAddress" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentSchool_Board" Association="Self.FK_StudentSchool_Board">
+            <End Role="Board" EntitySet="Board" />
+            <End Role="StudentSchool" EntitySet="StudentSchool" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentSchool_Grades" Association="Self.FK_StudentSchool_Grades">
+            <End Role="Grades" EntitySet="Grades" />
+            <End Role="StudentSchool" EntitySet="StudentSchool" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentSchool_Level" Association="Self.FK_StudentSchool_Level">
+            <End Role="Level" EntitySet="Level" />
+            <End Role="StudentSchool" EntitySet="StudentSchool" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentSchool_Students" Association="Self.FK_StudentSchool_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="StudentSchool" EntitySet="StudentSchool" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StuRegFormModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Board">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="BoardName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="StudentSchool" Relationship="StuRegFormModel.FK_StudentSchool_Board" FromRole="Board" ToRole="StudentSchool" />
+        </EntityType>
+        <EntityType Name="Districts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ZoneId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Zones" Relationship="Self.FK_Districts_Zones" FromRole="Districts" ToRole="Zones" />
+          <NavigationProperty Name="StudentAddress" Relationship="StuRegFormModel.FK_StudentAddress_Districts" FromRole="Districts" ToRole="StudentAddress" />
+        </EntityType>
+        <EntityType Name="Genders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Students" Relationship="StuRegFormModel.FK_Students_Genders" FromRole="Genders" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="Grades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="GPA" Type="Double" Nullable="false" />
+          <NavigationProperty Name="StudentSchool" Relationship="StuRegFormModel.FK_StudentSchool_Grades" FromRole="Grades" ToRole="StudentSchool" />
+        </EntityType>
+        <EntityType Name="Level">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="LevelName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="StudentSchool" Relationship="StuRegFormModel.FK_StudentSchool_Level" FromRole="Level" ToRole="StudentSchool" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Zones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Zone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Districts" Relationship="Self.FK_Districts_Zones" FromRole="Zones" ToRole="Districts" />
+          <NavigationProperty Name="StudentAddress" Relationship="StuRegFormModel.FK_StudentAddress_Zones" FromRole="Zones" ToRole="StudentAddress" />
+        </EntityType>
+        <Association Name="FK_Districts_Zones">
+          <End Role="Zones" Type="Self.Zones" Multiplicity="1" />
+          <End Role="Districts" Type="Self.Districts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Districts">
+              <PropertyRef Name="ZoneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StuRegFormEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Board" EntityType="Self.Board" />
+          <EntitySet Name="Districts" EntityType="Self.Districts" />
+          <EntitySet Name="Genders" EntityType="Self.Genders" />
+          <EntitySet Name="Grades" EntityType="Self.Grades" />
+          <EntitySet Name="Level" EntityType="Self.Level" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="Zones" EntityType="Self.Zones" />
+          <AssociationSet Name="FK_Districts_Zones" Association="Self.FK_Districts_Zones">
+            <End Role="Zones" EntitySet="Zones" />
+            <End Role="Districts" EntitySet="Districts" />
+          </AssociationSet>
+          <EntitySet Name="StudentAddress" EntityType="StuRegFormModel.StudentAddress" />
+          <AssociationSet Name="FK_StudentAddress_Districts" Association="StuRegFormModel.FK_StudentAddress_Districts">
+            <End Role="Districts" EntitySet="Districts" />
+            <End Role="StudentAddress" EntitySet="StudentAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentAddress_Zones" Association="StuRegFormModel.FK_StudentAddress_Zones">
+            <End Role="Zones" EntitySet="Zones" />
+            <End Role="StudentAddress" EntitySet="StudentAddress" />
+          </AssociationSet>
+          <EntitySet Name="vwStudentAddress" EntityType="StuRegFormModel.vwStudentAddress" />
+          <EntitySet Name="StudentSchool" EntityType="StuRegFormModel.StudentSchool" />
+          <AssociationSet Name="FK_StudentSchool_Board" Association="StuRegFormModel.FK_StudentSchool_Board">
+            <End Role="Board" EntitySet="Board" />
+            <End Role="StudentSchool" EntitySet="StudentSchool" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentSchool_Grades" Association="StuRegFormModel.FK_StudentSchool_Grades">
+            <End Role="Grades" EntitySet="Grades" />
+            <End Role="StudentSchool" EntitySet="StudentSchool" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentSchool_Level" Association="StuRegFormModel.FK_StudentSchool_Level">
+            <End Role="Level" EntitySet="Level" />
+            <End Role="StudentSchool" EntitySet="StudentSchool" />
+          </AssociationSet>
+          <EntitySet Name="Courses" EntityType="StuRegFormModel.Courses" />
+          <EntitySet Name="StudentCourse" EntityType="StuRegFormModel.StudentCourse" />
+          <AssociationSet Name="FK_StudentCourse_Courses" Association="StuRegFormModel.FK_StudentCourse_Courses">
+            <End EntitySet="Courses" Role="Courses" />
+            <End EntitySet="StudentCourse" Role="StudentCourse" />
+          </AssociationSet>
+          <EntitySet Name="StudentAttachments" EntityType="StuRegFormModel.StudentAttachments" />
+          <EntitySet Name="Students" EntityType="StuRegFormModel.Students" />
+          <AssociationSet Name="FK_Students_Genders" Association="StuRegFormModel.FK_Students_Genders">
+            <End Role="Genders" EntitySet="Genders" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_StudentAddress" Association="StuRegFormModel.FK_Students_StudentAddress">
+            <End Role="StudentAddress" EntitySet="StudentAddress" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_StudentAddress1" Association="StuRegFormModel.FK_Students_StudentAddress1">
+            <End Role="StudentAddress" EntitySet="StudentAddress" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentAttachments_Students" Association="StuRegFormModel.FK_StudentAttachments_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="StudentAttachments" EntitySet="StudentAttachments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentCourse_Students" Association="StuRegFormModel.FK_StudentCourse_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="StudentCourse" EntitySet="StudentCourse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentSchool_Students" Association="StuRegFormModel.FK_StudentSchool_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="StudentSchool" EntitySet="StudentSchool" />
+          </AssociationSet>
+          <EntitySet Name="vwStuAllInfo" EntityType="StuRegFormModel.vwStuAllInfo" />
+          </EntityContainer>
+        <EntityType Name="StudentAddress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ZoneId" Type="Int32" Nullable="false" />
+          <Property Name="DistrictId" Type="Int32" Nullable="false" />
+          <Property Name="WardNo" Type="Int32" Nullable="false" />
+          <Property Name="StreetName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Districts" Relationship="StuRegFormModel.FK_StudentAddress_Districts" FromRole="StudentAddress" ToRole="Districts" />
+          <NavigationProperty Name="Zones" Relationship="StuRegFormModel.FK_StudentAddress_Zones" FromRole="StudentAddress" ToRole="Zones" />
+          <NavigationProperty Name="Students" Relationship="StuRegFormModel.FK_Students_StudentAddress" FromRole="StudentAddress" ToRole="Students" />
+          <NavigationProperty Name="Students1" Relationship="StuRegFormModel.FK_Students_StudentAddress1" FromRole="StudentAddress" ToRole="Students" />
+          </EntityType>
+        <Association Name="FK_StudentAddress_Districts">
+          <End Type="StuRegFormModel.Districts" Role="Districts" Multiplicity="1" />
+          <End Type="StuRegFormModel.StudentAddress" Role="StudentAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Districts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentAddress">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentAddress_Zones">
+          <End Type="StuRegFormModel.Zones" Role="Zones" Multiplicity="1" />
+          <End Type="StuRegFormModel.StudentAddress" Role="StudentAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentAddress">
+              <PropertyRef Name="ZoneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="vwStudentAddress">
+          <Key>
+            <PropertyRef Name="StudentId" />
+            <PropertyRef Name="VoucherNo" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="GenderId" />
+            <PropertyRef Name="Mobile" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="DateOfBirth" />
+            <PropertyRef Name="ParentName" />
+            <PropertyRef Name="ParentMobile" />
+            <PropertyRef Name="RegistrationDate" />
+            <PropertyRef Name="PZone" />
+            <PropertyRef Name="PDistrict" />
+            <PropertyRef Name="wardNo" />
+            <PropertyRef Name="StreetName" />
+            <PropertyRef Name="tWard" />
+            <PropertyRef Name="tStreet" />
+            <PropertyRef Name="TZone" />
+            <PropertyRef Name="TDistrict" />
+          </Key>
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="VoucherNo" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GenderId" Type="Int32" Nullable="false" />
+          <Property Name="Mobile" Type="Int64" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ParentName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ParentMobile" Type="Int64" Nullable="false" />
+          <Property Name="PerAddressId" Type="Int32" />
+          <Property Name="TempAddressId" Type="Int32" />
+          <Property Name="RegistrationDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PZone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PDistrict" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="wardNo" Type="Int32" Nullable="false" />
+          <Property Name="StreetName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tWard" Type="Int32" Nullable="false" />
+          <Property Name="tStreet" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TZone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TDistrict" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="StudentSchool">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="SchoolName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SchoolAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PassedYear" Type="Int32" Nullable="false" />
+          <Property Name="LevelId" Type="Int32" Nullable="false" />
+          <Property Name="GradeId" Type="Int32" Nullable="false" />
+          <Property Name="Percentage" Type="Double" />
+          <Property Name="BoardId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Board" Relationship="StuRegFormModel.FK_StudentSchool_Board" FromRole="StudentSchool" ToRole="Board" />
+          <NavigationProperty Name="Grades" Relationship="StuRegFormModel.FK_StudentSchool_Grades" FromRole="StudentSchool" ToRole="Grades" />
+          <NavigationProperty Name="Level" Relationship="StuRegFormModel.FK_StudentSchool_Level" FromRole="StudentSchool" ToRole="Level" />
+          <NavigationProperty Name="Students" Relationship="StuRegFormModel.FK_StudentSchool_Students" FromRole="StudentSchool" ToRole="Students" />
+        </EntityType>
+        <Association Name="FK_StudentSchool_Board">
+          <End Type="StuRegFormModel.Board" Role="Board" Multiplicity="1" />
+          <End Type="StuRegFormModel.StudentSchool" Role="StudentSchool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Board">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentSchool">
+              <PropertyRef Name="BoardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentSchool_Grades">
+          <End Type="StuRegFormModel.Grades" Role="Grades" Multiplicity="1" />
+          <End Type="StuRegFormModel.StudentSchool" Role="StudentSchool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentSchool">
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentSchool_Level">
+          <End Type="StuRegFormModel.Level" Role="Level" Multiplicity="1" />
+          <End Type="StuRegFormModel.StudentSchool" Role="StudentSchool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Level">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentSchool">
+              <PropertyRef Name="LevelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Courses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="CourseName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="StudentCourse" Relationship="StuRegFormModel.FK_StudentCourse_Courses" FromRole="Courses" ToRole="StudentCourse" />
+        </EntityType>
+        <EntityType Name="StudentCourse">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Courses" Relationship="StuRegFormModel.FK_StudentCourse_Courses" FromRole="StudentCourse" ToRole="Courses" />
+          <NavigationProperty Name="Students" Relationship="StuRegFormModel.FK_StudentCourse_Students" FromRole="StudentCourse" ToRole="Students" />
+        </EntityType>
+        <Association Name="FK_StudentCourse_Courses">
+          <End Type="StuRegFormModel.Courses" Multiplicity="1" Role="Courses" />
+          <End Type="StuRegFormModel.StudentCourse" Multiplicity="*" Role="StudentCourse" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentCourse">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="StudentAttachments">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="PhotoAttPath" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="PhotoAttName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="MarksheetAttPath" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="MarksheetAttName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Students" Relationship="StuRegFormModel.FK_StudentAttachments_Students" FromRole="StudentAttachments" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="VoucherNo" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GenderId" Type="Int32" Nullable="false" />
+          <Property Name="Mobile" Type="Int64" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ParentName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ParentMobile" Type="Int64" Nullable="false" />
+          <Property Name="PerAddressId" Type="Int32" Nullable="false" />
+          <Property Name="TempAddressId" Type="Int32" />
+          <Property Name="RegistrationDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Genders" Relationship="StuRegFormModel.FK_Students_Genders" FromRole="Students" ToRole="Genders" />
+          <NavigationProperty Name="StudentAddress" Relationship="StuRegFormModel.FK_Students_StudentAddress" FromRole="Students" ToRole="StudentAddress" />
+          <NavigationProperty Name="StudentAddress1" Relationship="StuRegFormModel.FK_Students_StudentAddress1" FromRole="Students" ToRole="StudentAddress" />
+          <NavigationProperty Name="StudentAttachments" Relationship="StuRegFormModel.FK_StudentAttachments_Students" FromRole="Students" ToRole="StudentAttachments" />
+          <NavigationProperty Name="StudentCourse" Relationship="StuRegFormModel.FK_StudentCourse_Students" FromRole="Students" ToRole="StudentCourse" />
+          <NavigationProperty Name="StudentSchool" Relationship="StuRegFormModel.FK_StudentSchool_Students" FromRole="Students" ToRole="StudentSchool" />
+        </EntityType>
+        <Association Name="FK_Students_Genders">
+          <End Type="StuRegFormModel.Genders" Role="Genders" Multiplicity="1" />
+          <End Type="StuRegFormModel.Students" Role="Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_StudentAddress">
+          <End Type="StuRegFormModel.StudentAddress" Role="StudentAddress" Multiplicity="1" />
+          <End Type="StuRegFormModel.Students" Role="Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentAddress">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="PerAddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_StudentAddress1">
+          <End Type="StuRegFormModel.StudentAddress" Role="StudentAddress" Multiplicity="0..1" />
+          <End Type="StuRegFormModel.Students" Role="Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentAddress">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="TempAddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentAttachments_Students">
+          <End Type="StuRegFormModel.Students" Role="Students" Multiplicity="1" />
+          <End Type="StuRegFormModel.StudentAttachments" Role="StudentAttachments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="StudentAttachments">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentCourse_Students">
+          <End Type="StuRegFormModel.Students" Role="Students" Multiplicity="1" />
+          <End Type="StuRegFormModel.StudentCourse" Role="StudentCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="StudentCourse">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentSchool_Students">
+          <End Type="StuRegFormModel.Students" Role="Students" Multiplicity="1" />
+          <End Type="StuRegFormModel.StudentSchool" Role="StudentSchool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="StudentSchool">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="vwStuAllInfo">
+          <Key>
+            <PropertyRef Name="StudentId" />
+            <PropertyRef Name="VoucherNo" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="Gender" />
+            <PropertyRef Name="Mobile" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="DateOfBirth" />
+            <PropertyRef Name="ParentName" />
+            <PropertyRef Name="ParentMobile" />
+            <PropertyRef Name="RegistrationDate" />
+            <PropertyRef Name="pZone" />
+            <PropertyRef Name="pDistrict" />
+            <PropertyRef Name="pWardNo" />
+            <PropertyRef Name="pStreetName" />
+            <PropertyRef Name="tZone" />
+            <PropertyRef Name="tDistrict" />
+            <PropertyRef Name="tWardNo" />
+            <PropertyRef Name="tStreetName" />
+            <PropertyRef Name="SchoolName" />
+            <PropertyRef Name="SchoolAddress" />
+            <PropertyRef Name="PassedYear" />
+            <PropertyRef Name="BoardName" />
+            <PropertyRef Name="LevelName" />
+            <PropertyRef Name="GPA" />
+            <PropertyRef Name="CourseName" />
+            <PropertyRef Name="PhotoAttPath" />
+            <PropertyRef Name="PhotoAttName" />
+            <PropertyRef Name="MarksheetAttPath" />
+            <PropertyRef Name="MarksheetAttName" />
+          </Key>
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="VoucherNo" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="Int64" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ParentName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ParentMobile" Type="Int64" Nullable="false" />
+          <Property Name="RegistrationDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="pZone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pDistrict" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pWardNo" Type="Int32" Nullable="false" />
+          <Property Name="pStreetName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tZone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tDistrict" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tWardNo" Type="Int32" Nullable="false" />
+          <Property Name="tStreetName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SchoolName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SchoolAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PassedYear" Type="Int32" Nullable="false" />
+          <Property Name="Percentage" Type="Double" />
+          <Property Name="BoardName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LevelName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GPA" Type="Double" Nullable="false" />
+          <Property Name="CourseName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PhotoAttPath" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="PhotoAttName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="MarksheetAttPath" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="MarksheetAttName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StuRegFormModelStoreContainer" CdmEntityContainer="StuRegFormEntities">
+          <EntitySetMapping Name="Board">
+            <EntityTypeMapping TypeName="StuRegFormModel.Board">
+              <MappingFragment StoreEntitySet="Board">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BoardName" ColumnName="BoardName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Districts">
+            <EntityTypeMapping TypeName="StuRegFormModel.Districts">
+              <MappingFragment StoreEntitySet="Districts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="StuRegFormModel.Genders">
+              <MappingFragment StoreEntitySet="Genders">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grades">
+            <EntityTypeMapping TypeName="StuRegFormModel.Grades">
+              <MappingFragment StoreEntitySet="Grades">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="GPA" ColumnName="GPA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Level">
+            <EntityTypeMapping TypeName="StuRegFormModel.Level">
+              <MappingFragment StoreEntitySet="Level">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LevelName" ColumnName="LevelName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="StuRegFormModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zones">
+            <EntityTypeMapping TypeName="StuRegFormModel.Zones">
+              <MappingFragment StoreEntitySet="Zones">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Zone" ColumnName="Zone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentAddress">
+            <EntityTypeMapping TypeName="StuRegFormModel.StudentAddress">
+              <MappingFragment StoreEntitySet="StudentAddress">
+                <ScalarProperty Name="StreetName" ColumnName="StreetName" />
+                <ScalarProperty Name="WardNo" ColumnName="WardNo" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwStudentAddress">
+            <EntityTypeMapping TypeName="StuRegFormModel.vwStudentAddress">
+              <MappingFragment StoreEntitySet="vwStudentAddress">
+                <ScalarProperty Name="TDistrict" ColumnName="TDistrict" />
+                <ScalarProperty Name="TZone" ColumnName="TZone" />
+                <ScalarProperty Name="tStreet" ColumnName="tStreet" />
+                <ScalarProperty Name="tWard" ColumnName="tWard" />
+                <ScalarProperty Name="StreetName" ColumnName="StreetName" />
+                <ScalarProperty Name="wardNo" ColumnName="wardNo" />
+                <ScalarProperty Name="PDistrict" ColumnName="PDistrict" />
+                <ScalarProperty Name="PZone" ColumnName="PZone" />
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="TempAddressId" ColumnName="TempAddressId" />
+                <ScalarProperty Name="PerAddressId" ColumnName="PerAddressId" />
+                <ScalarProperty Name="ParentMobile" ColumnName="ParentMobile" />
+                <ScalarProperty Name="ParentName" ColumnName="ParentName" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentSchool">
+            <EntityTypeMapping TypeName="StuRegFormModel.StudentSchool">
+              <MappingFragment StoreEntitySet="StudentSchool">
+                <ScalarProperty Name="BoardId" ColumnName="BoardId" />
+                <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+                <ScalarProperty Name="GradeId" ColumnName="GradeId" />
+                <ScalarProperty Name="LevelId" ColumnName="LevelId" />
+                <ScalarProperty Name="PassedYear" ColumnName="PassedYear" />
+                <ScalarProperty Name="SchoolAddress" ColumnName="SchoolAddress" />
+                <ScalarProperty Name="SchoolName" ColumnName="SchoolName" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="StuRegFormModel.Courses">
+              <MappingFragment StoreEntitySet="Courses">
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentCourse">
+            <EntityTypeMapping TypeName="StuRegFormModel.StudentCourse">
+              <MappingFragment StoreEntitySet="StudentCourse">
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentAttachments">
+            <EntityTypeMapping TypeName="StuRegFormModel.StudentAttachments">
+              <MappingFragment StoreEntitySet="StudentAttachments">
+                <ScalarProperty Name="MarksheetAttName" ColumnName="MarksheetAttName" />
+                <ScalarProperty Name="MarksheetAttPath" ColumnName="MarksheetAttPath" />
+                <ScalarProperty Name="PhotoAttName" ColumnName="PhotoAttName" />
+                <ScalarProperty Name="PhotoAttPath" ColumnName="PhotoAttPath" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="StuRegFormModel.Students">
+              <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="TempAddressId" ColumnName="TempAddressId" />
+                <ScalarProperty Name="PerAddressId" ColumnName="PerAddressId" />
+                <ScalarProperty Name="ParentMobile" ColumnName="ParentMobile" />
+                <ScalarProperty Name="ParentName" ColumnName="ParentName" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwStuAllInfo">
+            <EntityTypeMapping TypeName="StuRegFormModel.vwStuAllInfo">
+              <MappingFragment StoreEntitySet="vwStuAllInfo">
+                <ScalarProperty Name="MarksheetAttName" ColumnName="MarksheetAttName" />
+                <ScalarProperty Name="MarksheetAttPath" ColumnName="MarksheetAttPath" />
+                <ScalarProperty Name="PhotoAttName" ColumnName="PhotoAttName" />
+                <ScalarProperty Name="PhotoAttPath" ColumnName="PhotoAttPath" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="GPA" ColumnName="GPA" />
+                <ScalarProperty Name="LevelName" ColumnName="LevelName" />
+                <ScalarProperty Name="BoardName" ColumnName="BoardName" />
+                <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+                <ScalarProperty Name="PassedYear" ColumnName="PassedYear" />
+                <ScalarProperty Name="SchoolAddress" ColumnName="SchoolAddress" />
+                <ScalarProperty Name="SchoolName" ColumnName="SchoolName" />
+                <ScalarProperty Name="tStreetName" ColumnName="tStreetName" />
+                <ScalarProperty Name="tWardNo" ColumnName="tWardNo" />
+                <ScalarProperty Name="tDistrict" ColumnName="tDistrict" />
+                <ScalarProperty Name="tZone" ColumnName="tZone" />
+                <ScalarProperty Name="pStreetName" ColumnName="pStreetName" />
+                <ScalarProperty Name="pWardNo" ColumnName="pWardNo" />
+                <ScalarProperty Name="pDistrict" ColumnName="pDistrict" />
+                <ScalarProperty Name="pZone" ColumnName="pZone" />
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="ParentMobile" ColumnName="ParentMobile" />
+                <ScalarProperty Name="ParentName" ColumnName="ParentName" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

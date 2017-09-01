@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bf7b19324a0e480fb2f2c260db0ffc97" Name="Diagram1">
+        <EntityTypeShape EntityType="StuRegFormModel.Board" Width="1.5" PointX="10.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StuRegFormModel.Districts" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StuRegFormModel.Genders" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StuRegFormModel.Grades" Width="1.5" PointX="10.5" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="StuRegFormModel.Level" Width="1.5" PointX="10.5" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="StuRegFormModel.Users" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="StuRegFormModel.Zones" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <AssociationConnector Association="StuRegFormModel.FK_Districts_Zones" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="StuRegFormModel.StudentAddress" Width="1.5" PointX="5.25" PointY="3.5" />
+        <AssociationConnector Association="StuRegFormModel.FK_StudentAddress_Districts" />
+        <AssociationConnector Association="StuRegFormModel.FK_StudentAddress_Zones" />
+        <EntityTypeShape EntityType="StuRegFormModel.vwStudentAddress" Width="1.5" PointX="7.375" PointY="8.75" />
+        <EntityTypeShape EntityType="StuRegFormModel.StudentSchool" Width="1.5" PointX="12.75" PointY="4.125" />
+        <AssociationConnector Association="StuRegFormModel.FK_StudentSchool_Board" />
+        <AssociationConnector Association="StuRegFormModel.FK_StudentSchool_Grades" />
+        <AssociationConnector Association="StuRegFormModel.FK_StudentSchool_Level" />
+        <EntityTypeShape EntityType="StuRegFormModel.Courses" Width="1.5" PointX="4.375" PointY="0.5" />
+        <EntityTypeShape EntityType="StuRegFormModel.StudentCourse" Width="1.5" PointX="7.5" PointY="0.5" />
+        <AssociationConnector ManuallyRouted="true" Association="StuRegFormModel.FK_StudentCourse_Courses">
+          <ConnectorPoint PointX="5.875" PointY="1.2978417968749998" />
+          <ConnectorPoint PointX="6.6875" PointY="1.2978417968749998" />
+          <ConnectorPoint PointX="6.6875" PointY="1.2978417968750007" />
+          <ConnectorPoint PointX="7.5" PointY="1.2978417968750007" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="StuRegFormModel.StudentAttachments" Width="1.5" PointX="9.75" PointY="3.625" />
+        <EntityTypeShape EntityType="StuRegFormModel.Students" Width="1.5" PointX="7.5" PointY="3.5" />
+        <AssociationConnector Association="StuRegFormModel.FK_Students_Genders" />
+        <AssociationConnector Association="StuRegFormModel.FK_Students_StudentAddress" />
+        <AssociationConnector Association="StuRegFormModel.FK_Students_StudentAddress1" />
+        <AssociationConnector Association="StuRegFormModel.FK_StudentAttachments_Students" />
+        <AssociationConnector Association="StuRegFormModel.FK_StudentCourse_Students" />
+        <AssociationConnector Association="StuRegFormModel.FK_StudentSchool_Students" />
+        <EntityTypeShape EntityType="StuRegFormModel.vwStuAllInfo" Width="1.5" PointX="3.375" PointY="9.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
