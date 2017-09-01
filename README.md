@@ -1,2 +1,2 @@
 # StudentRegForm
-This is an online application for enrolling/registering students in a school/college. It is still in development phase.
+This is an online application for enrolling/registering new students in a school/college developed using ASP.NET MVC. It is still in development phase.
